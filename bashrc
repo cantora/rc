@@ -52,3 +52,5 @@ ulimit -c unlimited
 
 #source local transient configurations
 . $HOME/.local.bashrc
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
