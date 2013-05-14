@@ -51,6 +51,7 @@ alias rudo="sudo -E $(which ruby)"
 ulimit -c unlimited
 
 #source local transient configurations
-. $HOME/.local.bashrc
+LOCAL_BASHRC=$HOME/.local.bashrc
+[ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
