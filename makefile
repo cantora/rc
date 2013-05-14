@@ -1,6 +1,6 @@
 
 define install-template 
-cd $$HOME && cp -v -s $(CURDIR)/$(1) ./$(2)
+cd $$HOME && cp -v -s -b $(CURDIR)/$(1) ./$(2)
 endef
 
 .PHONY: install
