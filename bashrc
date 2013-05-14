@@ -45,7 +45,11 @@ alias scp-pw="ssh -o PreferredAuthentications=password"
 
 alias trash='trash-put'
 export EDITOR=vim
-alias rudo="sudo -E $(which ruby)"
+
+RUBY="$(which ruby)"
+if [ -n "$RUBY" ]; then
+    alias rudo="sudo -E $RUBY"
+fi
 
 #unlimited core file size
 ulimit -c unlimited
