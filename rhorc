@@ -1,0 +1,31 @@
+; rho rc file
+
+; ENVARS
+set $hardtab 4
+
+; MACROS
+
+store-procedure suspend-to-shell
+  shell-command "echo 'Type ~"exit~" or <Ctrl-D> to return to Rho'; bash ; true "
+!endm
+
+store-procedure insert-date
+  shell-command "echo -n `date +~"%a %e, %b %Y, %T~"` > _rho_tmpf"
+  insert-file _rho_tmpf
+  shell-command "rm -f _rho_tmpf"
+!endm
+
+store-procedure test-binding
+  write-message "binding worked!"
+!endm
+
+; BINDINGS
+macro-to-key suspend-to-shell       ^XC
+macro-to-key insert-date            M-#
+
+bind-to-key set-mark                ^@
+
+bind-to-key beginning-of-buffer     ^X[
+bind-to-key end-of-buffer           ^X]
+bind-to-key indent-region           ^X^I
+bind-to-key insert-file             ^Xi
