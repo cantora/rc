@@ -12,7 +12,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 PS1="\[\033[1;37m\]\h[\$(if [ \$(pwd | wc -c) -gt 30 ]; then echo -n '...'; pwd | tail -c 27; else pwd; fi)]>\[\033[0m\] "
 
