@@ -58,4 +58,4 @@ ulimit -c unlimited
 LOCAL_BASHRC=$HOME/.local.bashrc
 [ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.cabal/bin # add cabal bin dir to PATH
