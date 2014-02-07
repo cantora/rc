@@ -52,3 +52,11 @@ keycode  57 = space
 keycode  58 = Control
 keycode  86 = less             greater          bar
 keycode  97 = Control
+
+# this modifier is not used for anything, so we represent super/OS button with it
+keycode 125 = Control_R
+
+# reset explicit keymaps, allowing any column to be set
+keymaps 0-256
+# switch to console 2 on super+space
+ctrlr keycode 57 = Console_2
