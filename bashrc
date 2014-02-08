@@ -35,8 +35,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=$HOME/bin:$PATH
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
@@ -60,4 +58,4 @@ ulimit -c unlimited
 LOCAL_BASHRC=$HOME/.local.bashrc
 [ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
 
-PATH=$PATH:$HOME/.cabal/bin # add cabal bin dir to PATH
+export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
