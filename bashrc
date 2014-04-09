@@ -1,11 +1,11 @@
 if [[ -z "$PS1" ]]; then return; fi
 
-HISTCONTROL=ignoredups:ignorespace
+HISTCONTROL=ignoreboth:erasedupes
 
 shopt -s histappend
 
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=999999
+HISTFILESIZE=""
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
