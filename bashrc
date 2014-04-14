@@ -59,3 +59,6 @@ LOCAL_BASHRC=$HOME/.local.bashrc
 [ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
 
 export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
+
+GPG_TTY=$(tty)
+export GPG_TTY
