@@ -1,5 +1,8 @@
 if [[ -z "$PS1" ]]; then return; fi
 
+#set font if we are in a physical terminal
+tty | grep '/dev/tty[0-9]\+' >/dev/null && setfont ter-124n
+
 HISTCONTROL=ignoreboth:erasedupes
 
 shopt -s histappend
