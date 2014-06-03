@@ -1,8 +1,5 @@
 if [[ -z "$PS1" ]]; then return; fi
 
-#set font if we are in a physical terminal
-tty | grep '/dev/tty[0-9]\+' >/dev/null && setfont ter-124n
-
 HISTCONTROL=ignoreboth:erasedupes
 
 shopt -s histappend
@@ -43,11 +40,9 @@ fi
 
 alias ssh-pw="ssh -o PreferredAuthentications=password"
 alias scp-pw="ssh -o PreferredAuthentications=password"
-
 alias trash='trash-put'
-export EDITOR=vim
-
 alias tmpdir='cd $(mktemp -d)'
+export EDITOR=vim
 
 #unlimited core file size
 ulimit -c unlimited
@@ -55,6 +50,12 @@ ulimit -c unlimited
 #source local transient configurations
 LOCAL_BASHRC=$HOME/.local.bashrc
 [ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
+
+if [ -z "$FONT" ]; then
+    FONT=ter-124n
+fi
+#set font if we are in a physical terminal
+tty | grep '/dev/tty[0-9]\+' >/dev/null && setfont $FONT
 
 export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
