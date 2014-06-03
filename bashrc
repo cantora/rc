@@ -49,11 +49,6 @@ export EDITOR=vim
 
 alias tmpdir='cd $(mktemp -d)'
 
-RUBY="$(which ruby 2>/dev/null)"
-if [ -n "$RUBY" ]; then
-    alias rudo="sudo -E $RUBY"
-fi
-
 #unlimited core file size
 ulimit -c unlimited
 
@@ -65,3 +60,15 @@ export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
 GPG_TTY=$(tty)
 export GPG_TTY
+
+RUBY="$(which ruby 2>/dev/null)"
+if [ -n "$RUBY" ]; then
+    alias rudo="sudo -E $RUBY"
+    export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
+fi
+
+GO="$(which go 2>/dev/null)"
+if [ -n "$GO" ]; then
+    export GOPATH=$HOME/golang
+    export PATH=$GOPATH/bin:$PATH
+fi
