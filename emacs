@@ -79,5 +79,18 @@
 ;; Translate C-h to DEL
 (keyboard-translate ?\C-h ?\C-?)
 
+;; org mode options
+(setq org-startup-indent t)
 
+(when (eq 24 emacs-major-version)
+  (progn
+    (package-initialize)
+    (add-to-list 'package-archives
+		 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+		 '("marmalade" . "http://marmalade-repo.org/packages/")
+    )
+  )
 
+(require 'visual-regexp)
+(define-key global-map (kbd "M-%") 'vr/replace)
+(define-key global-map (kbd "M-C-%") 'vr/query-replace)
