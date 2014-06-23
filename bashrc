@@ -76,3 +76,4 @@ fi
 
 alias ec='emacsclient -c'
 alias emacs='ec'
+alias userctl='systemctl --user'
