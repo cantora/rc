@@ -77,7 +77,8 @@
 
 
 ;; Translate C-h to DEL
-(keyboard-translate ?\C-h ?\C-?)
+;; (keyboard-translate ?\C-h ?\C-?)
+(global-set-key [(control h)] 'delete-backward-char)
 
 ;; org mode options
 (setq org-startup-indent t)
