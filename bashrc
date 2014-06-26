@@ -74,6 +74,5 @@ if [ -n "$GO" ]; then
     export PATH=$GOPATH/bin:$PATH
 fi
 
-alias ec='emacsclient -c'
 alias emacs='ec'
 alias userctl='systemctl --user'
