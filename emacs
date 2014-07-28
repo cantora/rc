@@ -95,3 +95,44 @@
 (require 'visual-regexp)
 (define-key global-map (kbd "M-%") 'vr/replace)
 (define-key global-map (kbd "M-C-%") 'vr/query-replace)
+
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+(defun monopaste-push-buffer ()
+  (call-process-region
+    1
+    (point-max)
+    "monopaste"
+    nil
+    nil
+    nil
+    "push"
+    "--no-strip"))
+
+(defun monopaste-push-string (string)
+  (with-temp-buffer
+    (progn
+      (insert string)
+      (monopaste-push-buffer))))
+
+(setq interprogram-cut-function 'monopaste-push-string)
+
+(defun monopaste-buffer-n (n)
+  (shell-command-to-string
+    (format "monopaste buf -n %d" n)))
+
+(defun monopaste-buffer-top () (monopaste-buffer-n 0))
+
+(defun kill-ring-top ()
+  (let ((krtop-props (nth 0 kill-ring-yank-pointer)))
+    (if krtop-props (substring-no-properties krtop-props) "")))
+
+(defun monopaste-buffer-top-non-emacs ()
+  (let
+    ( (krtop (kill-ring-top))
+      (mptop (monopaste-buffer-top)))
+    (if (not (string-equal krtop mptop)) mptop)))
+
+(setq interprogram-paste-function 'monopaste-buffer-top-non-emacs)
