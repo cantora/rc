@@ -47,32 +47,22 @@ export EDITOR=vim
 #unlimited core file size
 ulimit -c unlimited
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
+source $HOME/.environment
+
+alias emacs='ec'
+alias userctl='systemctl --user'
+alias rudo="sudo -E ruby"
+
 #source local transient configurations
 LOCAL_BASHRC=$HOME/.local.bashrc
 [ -f $LOCAL_BASHRC ] && source $LOCAL_BASHRC
 
+#do this after LOCAL_BASHRC so that it can override FONT
 if [ -z "$FONT" ]; then
     FONT=ter-124n
 fi
 #set font if we are in a physical terminal
 tty | grep '/dev/tty[0-9]\+' >/dev/null && setfont $FONT
-
-export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
-
-GPG_TTY=$(tty)
-export GPG_TTY
-
-RUBY="$(which ruby 2>/dev/null)"
-if [ -n "$RUBY" ]; then
-    alias rudo="sudo -E $RUBY"
-    export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
-fi
-
-GO="$(which go 2>/dev/null)"
-if [ -n "$GO" ]; then
-    export GOPATH=$HOME/golang
-    export PATH=$GOPATH/bin:$PATH
-fi
-
-alias emacs='ec'
-alias userctl='systemctl --user'
