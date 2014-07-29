@@ -136,3 +136,5 @@
     (if (not (string-equal krtop mptop)) mptop)))
 
 (setq interprogram-paste-function 'monopaste-buffer-top-non-emacs)
+
+(setq org-startup-indented t)
