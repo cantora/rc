@@ -138,3 +138,5 @@
 (setq interprogram-paste-function 'monopaste-buffer-top-non-emacs)
 
 (setq org-startup-indented t)
+(dolist (hook '(adoc-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
