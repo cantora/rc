@@ -12,8 +12,6 @@ else
   }
 fi
 
-export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
-
 RUBY="$(which ruby 2>/dev/null)"
 if [ -n "$RUBY" ]; then
     export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
@@ -24,5 +22,7 @@ if [ -n "$GO" ]; then
     export GOPATH=$HOME/golang
     export PATH=$GOPATH/bin:$PATH
 fi
+
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:$PATH
 
 efile_set PATH $PATH
