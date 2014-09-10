@@ -1,4 +1,4 @@
-(setq auto-mode-alist (cons '("\\..*$" . fundamental-mode) auto-mode-alist))
+;; (setq auto-mode-alist (cons '("\\..*$" . fundamental-mode) auto-mode-alist))
 
 ;; Don't make me type out 'yes' and 'no'
 (fset 'yes-or-no-p 'y-or-n-p)
