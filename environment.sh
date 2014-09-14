@@ -12,12 +12,14 @@ else
   }
 fi
 
+export LD_LIBRARY_PATH=$HOME/.local/lib
+
 RUBY="$(which ruby 2>/dev/null)"
 if [ -n "$RUBY" ]; then
     export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
 fi
 
-GO="$(which go 2>/dev/null)"
+GO="$(PATH=$HOME/bin:$PATH which go 2>/dev/null)"
 if [ -n "$GO" ]; then
     export GOPATH=$HOME/golang
     export PATH=$GOPATH/bin:$PATH
