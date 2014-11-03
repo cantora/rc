@@ -19,7 +19,7 @@
 ;;(setq-default default-tab-width 4)
 (setq-default tab-width 4)
 (global-set-key (kbd "TAB") 'self-insert-command)
-
+(global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 
 (defun indent-region-with-tab ()
   (interactive)
