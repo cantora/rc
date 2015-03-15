@@ -1,3 +1,5 @@
+(message "[+] .emacs init")
+
 ;; (setq auto-mode-alist (cons '("\\..*$" . fundamental-mode) auto-mode-alist))
 
 ;; Don't make me type out 'yes' and 'no'
@@ -83,20 +85,6 @@
 ;; org mode options
 (setq org-startup-indent t)
 
-(when (eq 24 emacs-major-version)
-  (progn
-    (package-initialize)
-    (add-to-list 'package-archives
-		 '("melpa" . "http://melpa.milkbox.net/packages/") t)
-		 '("marmalade" . "http://marmalade-repo.org/packages/")
-    )
-  )
-
-(require 'visual-regexp)
-(define-key global-map (kbd "M-%") 'vr/replace)
-(define-key global-map (kbd "M-C-%") 'vr/query-replace)
-
-
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
@@ -141,6 +129,18 @@
 (dolist (hook '(adoc-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1))))
 
+(require 'el-get)
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-recipes")
+(unless (file-directory-p el-get-dir)
+        (make-directory el-get-dir t))
+(setq el-get-allow-insecure nil)
+(setq el-get-verbose t)
+(el-get 'sync '(cantora-flx hiraishin cantora-visual-regexp))
+
+(require 'visual-regexp)
+(define-key global-map (kbd "M-%") 'vr/replace)
+(define-key global-map (kbd "M-C-%") 'vr/query-replace)
+
 (require 'ido)
 (require 'flx-ido)
 (ido-mode 1)
@@ -149,3 +149,8 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+(require 'hiraishin)
+(hiraishin-mode 1)
+
+(message "[-] .emacs init")
