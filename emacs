@@ -153,4 +153,15 @@
 (require 'hiraishin)
 (hiraishin-mode 1)
 
+(global-set-key (kbd "M-[ b") 'shrink-window)
+(global-set-key (kbd "M-[ a") 'enlarge-window)
+
+(defun cantora-home-dir-rel (path)
+  (concat (file-name-as-directory (directory-file-name "~"))
+          path))
+
+(let ((local-emacs-conf (cantora-home-dir-rel ".emacs.local")))
+  (when (file-exists-p local-emacs-conf)
+        (load-file local-emacs-conf)))
+
 (message "[-] .emacs init")
